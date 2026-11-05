@@ -1,4 +1,4 @@
-# Teacher field guide — Attendance, made clear
+# Teacher Quest — Interactive learning worlds
 
 A self-contained, interactive website based on **Teacher Attendance Rules Orientation 2026 — Revised Version**, reviewed November 5, 2026.
 
@@ -27,6 +27,24 @@ Then open `http://localhost:8000`.
 Relative file paths support both an account site and a project URL such as `https://USERNAME.github.io/REPOSITORY/`. There is no React/Vite build or Actions workflow to configure. In-page navigation uses anchors, so refreshing a chapter does not require server routing.
 
 GitHub Pages websites are normally public, including sites published from private repositories. This package includes the orientation's internal attendance rules and its PowerPoint; select sharing that is appropriate for that information before publishing. This package does not provide access control. See [creating a GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site) and [configuring the publishing source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+
+## Premium learning worlds
+
+The home screen has three native 3D worlds: PFI deductions, ATI rewards, and Monthly Ranking. A five-stage path groups the 12 missions: Start here → PFI → ATI → Ranking → Corrections. Stage filters let teachers focus on one topic. Full rules, Quick tools and Resources each open a focused reference view.
+
+The passport shows completed missions and a separate **practice score out of 24**. This counts correctly learned questions, including retries; it is unrelated to official attendance or ranking scores. **Reset game & score** asks for confirmation and clears mission positions, answers, stamps and summary eligibility. Cancel or Escape keeps progress. Chapter reading bookmarks and motion preferences are preserved.
+
+**Get the full PDF** downloads the 37-page complete guide: all 33 reviewed source topics and all five supplementary references, including readable transcriptions and original screenshots. It is available before starting any mission. This is separate from the completion-only personal PNG summary.
+
+Animation uses local CSS, authored Figma keyframes and subtle pointer tilt. It pauses while choosing a world, when offscreen and when the tab is hidden. Manual motion-off and system reduced-motion stop movement. No video, remote font, paid media, framework or build step is needed.
+
+## Teacher Quest
+
+Follow 12 open missions and 24 source-based practice questions. Read one card at a time, retry freely, and collect completion stamps. Matching and ordering use buttons, never dragging.
+
+After all missions are complete, My progress offers a one-page PNG summary and a print / save-as-PDF layout. The optional name stays in memory only and clears on reload. Personal completion is recorded on the device and is not independently verified.
+
+The full rules, chapter bookmarks, quick tools, correction checklist, and original PowerPoint remain available.
 
 ## What teachers can do
 
@@ -57,6 +75,13 @@ Source: [Teacher Attendance Rules Orientation 2026 — Revised Version](https://
 | `index.html` | Semantic page structure, navigation, tool forms, correction checklist |
 | `styles.css` | Responsive layout, design tokens, 3D depth, motion, print styling |
 | `app.js` | Chapter navigation, search, tool interactions, reading progress |
+| `mission-content.js` | Source-linked mission cards and all 24 practice questions |
+| `quest-core.js` | Validated local learning state and answer checks |
+| `quest.js` | Mission routing, practice controls, stamps, PNG and print summary |
+| `quest.css` | Passport, mission path, accessible game layouts and animation |
+| `premium.css` | Learning-world design, responsive layouts and Figma motion |
+| `premium.js` | Pointer interaction, motion pauses and focused reference navigation |
+| `assets/Teacher-Quest-Complete-Guide.pdf` | Complete reviewed guide plus supplementary references |
 | `content.js` | Complete reviewed rule content and source references |
 | `rules.js` | Pure deadline, Gross PFI class, and ATI example functions |
 | `assets/mark.svg` | Local icon |
@@ -78,11 +103,22 @@ Source: [Teacher Attendance Rules Orientation 2026 — Revised Version](https://
 With Node.js installed, run the policy tests from this folder:
 
 ```sh
-node --test tests/rules.test.cjs
+node --test tests/*.cjs
 ```
 
 ## Device storage
 
-Only a list of read chapters and the motion setting are stored, under `teacher-field-guide-2026-v1`. No teacher name, employee number, attendance record, or tool input is sent or stored. Reading progress stays on that browser/device. If storage is unavailable, progress still works for the current visit. **Reset progress** clears the reading marks. The correction checklist resets on reload.
+Mission positions, visited cards, correct answers, and stamps are stored separately under `teacher-quest-nov2026-v1`. Mission reset clears only this record. A stamp requires every rule card plus both correct answers; replay keeps earned stamps. Blocked or invalid storage switches to progress for the current visit.
+
+The list of read chapters and the motion setting are stored under `teacher-field-guide-2026-v1`. No teacher name, employee number, attendance record, or tool input is sent or stored. Reading progress stays on that browser/device. If storage is unavailable, progress still works for the current visit. **Reset progress** clears the reading marks. The correction checklist resets on reload.
 
 No analytics, remote fonts, external scripts, or runtime network services are used.
+
+
+## Extra resources supplied by the user
+
+The Resources section contains all five supplied images and readable companions: incentive symbols, the October 2023 payroll example, attendance points, seven OT entries, and eleven FAQs. It includes category filters, local search, original-image viewing/downloads, and links to the reviewed rules. The main guide search also finds these references and labels their editions.
+
+These references do not replace the reviewed November 2026 policy. The 2023 pay figures are historical. Undefined check/cross meanings, OT units and scope, and FAQ PFI-point terminology are flagged. The current calculators, 12 missions, 24 answers and completion requirements are unchanged. The included PowerPoint remains the reviewed orientation; it has not been rewritten with the extra screenshots.
+
+New files: resources-content.js, resources.js, resources.css, tests/resources.test.cjs, and five originals in assets/resources/. Full-guide printing includes all extra resources even if a filter is active, then restores the previous filter and open answers.

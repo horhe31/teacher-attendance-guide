@@ -97,8 +97,13 @@
     if(!query) { $('#search-matches').replaceChildren();return; }
     const words=query.split(/\s+/);
     const matches=content.sections.filter(s=>words.every(word=>[s.title,s.sub,s.key,...(s.list||[]),...(s.cards||[]).flatMap(c=>[c.title,c.body])].join(' ').toLocaleLowerCase().includes(word)));
-    $('#search-status').textContent=`${matches.length} ${matches.length===1?'topic':'topics'} found across the guide`;
-    $('#search-matches').innerHTML=matches.length?matches.map(s=>`<button class="search-hit" data-result="${s.id}"><small>${e(chapterNames[s.chapter])}</small><strong>${e(s.title)}</strong></button>`).join(''):'<div class="empty-state"><strong>No matching rule found.</strong><p>Try a shorter phrase, such as “leave”, “L1”, or “deadline”.</p></div>';
+    const extraMatches=window.TeacherResources?window.TeacherResources.search(query):[];
+    const total=matches.length+extraMatches.length;
+    $('#search-status').textContent=`${total} ${total===1?'topic':'topics'} found across the guide and extra resources`;
+    $('#search-matches').innerHTML=total?matches.map(s=>`<button class="search-hit" data-result="${s.id}"><small>${e(chapterNames[s.chapter])} · reviewed November 2026</small><strong>${e(s.title)}</strong></button>`).join('')+extraMatches.map(r=>`<button class="search-hit" data-extra-result="${e(r.id)}"><small>Extra reference · ${e(r.edition)}</small><strong>${e(r.title)}</strong></button>`).join(''):'<div class="empty-state"><strong>No matching rule found.</strong><p>Try a shorter phrase, such as “leave”, “L1”, or “deadline”.</p></div>';
+    $$('[data-extra-result]').forEach(button=>button.addEventListener('click',()=>{
+      const id=button.dataset.extraResult;$('#rule-search').value='';search();location.hash='resource-'+id;
+    }));
     $$('[data-result]').forEach(button=>button.addEventListener('click',()=>{
       const section=content.sections.find(s=>s.id===Number(button.dataset.result));
       $('#rule-search').value=''; search();
@@ -143,6 +148,7 @@
     button.title=button.getAttribute('aria-label');$('.motion-word',button).textContent=off?'Motion off':'Motion on';
     if(off) $('#record-stack').style.transform='';
   }
+  $('#guide-overview').innerHTML=topic(content.sections.find(s=>s.id===2),0).replace('class="rule-topic"','class="rule-topic overview-topic"');
   renderChapters(); updateProgress(); renderDeadline(); renderRate(); renderAti(); updateMotion();
   $$('[data-chapter]').forEach(button=>button.addEventListener('click',()=>setChapter(button.dataset.chapter)));
   wireTabs($$('[data-chapter]'),button=>setChapter(button.dataset.chapter));
@@ -175,6 +181,7 @@
   $('#print-guide').addEventListener('click',()=>window.print());
   if('IntersectionObserver' in window) {const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:.15});$$('.reveal').forEach(item=>observer.observe(item));}
   const scene=$('#record-scene');const stack=$('#record-stack');let frame=0;
+  if(scene.classList.contains('atlas-scene'))return;
   scene.addEventListener('pointermove',event=>{
     if(state.motionOff||preference.matches||event.pointerType!=='mouse')return;
     const rect=scene.getBoundingClientRect();const x=(event.clientX-rect.left)/rect.width-.5;const y=(event.clientY-rect.top)/rect.height-.5;

@@ -95,3 +95,8 @@ Current checks supersede earlier visual observations above.
 This verification record covers the local release candidate. Live deployment status is checked separately after publication. Physical devices, Safari, Firefox and a human screen-reader session were not tested.
 
 - Four final hosting checks pass: Chrome and Edge at the GitHub project path `/teacher-attendance-guide/`, direct chapter links, complete source text, assets, tilt/motion controls, zero asset/runtime errors, and direct local-file opening. Seven tested color pairs exceed 4.5:1 (body 6.01, headings 13.88, secondary 5.95, metadata 4.90, primary button 6.86, note label 5.71, recap 9.09).
+
+
+## Revised main orientation download
+
+The supplied PDF is 32 pages, 720×405 points (16:9), unencrypted and contains no JavaScript. The main PDF asset is copied byte-for-byte from the user attachment. All orientation download controls use this file and a descriptive PDF filename; the previous generated-guide and PPTX labels are replaced. Existing missions, calculators and supplementary references are unchanged.

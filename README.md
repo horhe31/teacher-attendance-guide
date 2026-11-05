@@ -34,7 +34,7 @@ The home screen has three native 3D worlds: PFI deductions, ATI rewards, and Mon
 
 The passport shows completed missions and a separate **practice score out of 24**. This counts correctly learned questions, including retries; it is unrelated to official attendance or ranking scores. **Reset game & score** asks for confirmation and clears mission positions, answers, stamps and summary eligibility. Cancel or Escape keeps progress. Chapter reading bookmarks and motion preferences are preserved.
 
-**Get the full PDF** downloads the 37-page complete guide: all 33 reviewed source topics and all five supplementary references, including readable transcriptions and original screenshots. It is available before starting any mission. This is separate from the completion-only personal PNG summary.
+**Get the orientation PDF** downloads the user-supplied 32-page “Teacher Attendance Rules Orientation 2026 - Revised Version.” The attachment was already a widescreen PDF and is served without alteration. It replaces the generated 37-page PDF as the main orientation download. All presentation links now use this revised PDF. The five supplementary references remain readable on the website. This download is available before starting any mission and is separate from the completion-only personal PNG summary.
 
 Animation uses local CSS, authored Figma keyframes and subtle pointer tilt. It pauses while choosing a world, when offscreen and when the tab is hidden. Manual motion-off and system reduced-motion stop movement. No video, remote font, paid media, framework or build step is needed.
 
@@ -44,7 +44,7 @@ Follow 12 open missions and 24 source-based practice questions. Read one card at
 
 After all missions are complete, My progress offers a one-page PNG summary and a print / save-as-PDF layout. The optional name stays in memory only and clears on reload. Personal completion is recorded on the device and is not independently verified.
 
-The full rules, chapter bookmarks, quick tools, correction checklist, and original PowerPoint remain available.
+The full rules, chapter bookmarks, quick tools, correction checklist, and revised orientation PDF remain available.
 
 ## What teachers can do
 
@@ -55,7 +55,7 @@ The full rules, chapter bookmarks, quick tools, correction checklist, and origin
 - Enter Gross PFI to view the corresponding class and three code-group rates.
 - Switch between the original ATI progression examples.
 - Mark chapters as read, with anonymous progress saved on the same device.
-- Check the five correction steps, print the full guide, or download the PowerPoint.
+- Check the five correction steps, print the full guide, or download the revised orientation PDF.
 - Turn off animation; device reduced-motion preferences are also respected.
 
 ## Content boundaries
@@ -81,7 +81,7 @@ Source: [Teacher Attendance Rules Orientation 2026 — Revised Version](https://
 | `quest.css` | Passport, mission path, accessible game layouts and animation |
 | `premium.css` | Learning-world design, responsive layouts and Figma motion |
 | `premium.js` | Pointer interaction, motion pauses and focused reference navigation |
-| `assets/Teacher-Quest-Complete-Guide.pdf` | Complete reviewed guide plus supplementary references |
+| `assets/Teacher-Quest-Complete-Guide.pdf` | User-supplied 32-page revised orientation PDF; stable download URL |
 | `content.js` | Complete reviewed rule content and source references |
 | `rules.js` | Pure deadline, Gross PFI class, and ATI example functions |
 | `assets/mark.svg` | Local icon |
@@ -122,3 +122,7 @@ The Resources section contains all five supplied images and readable companions:
 These references do not replace the reviewed November 2026 policy. The 2023 pay figures are historical. Undefined check/cross meanings, OT units and scope, and FAQ PFI-point terminology are flagged. The current calculators, 12 missions, 24 answers and completion requirements are unchanged. The included PowerPoint remains the reviewed orientation; it has not been rewritten with the extra screenshots.
 
 New files: resources-content.js, resources.js, resources.css, tests/resources.test.cjs, and five originals in assets/resources/. Full-guide printing includes all extra resources even if a filter is active, then restores the previous filter and open answers.
+
+## Main orientation download replacement
+
+The user supplied a revised orientation PDF and requested it as the main presentation download. The file is copied byte-for-byte, not recreated or converted into an editable PowerPoint. The original PPTX asset remains archived for compatibility, while all presentation links use the supplied revised PDF. This file replacement does not change mission answers or calculator logic.

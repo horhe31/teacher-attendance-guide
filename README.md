@@ -117,7 +117,7 @@ No analytics, remote fonts, external scripts, or runtime network services are us
 
 ## PFI sheet calculator
 
-Open `#pfi-calculator`, or choose **Quick tools → PFI calculator**. The source is the user-linked [PFI DEDUCTION spreadsheet](https://zp9fxvayn6g.jp.larksuite.com/wiki/NzPxwp5HziQOrQkHgbejSFRVplc), exported and read in full on November 6, 2026. This is a separate reference; it does not replace the reviewed orientation, mission answers, or the other tools.
+Open `#pfi-calculator`, or choose **Quick tools → Sheet calculator**. The source is the user-linked [PFI DEDUCTION spreadsheet](https://zp9fxvayn6g.jp.larksuite.com/wiki/NzPxwp5HziQOrQkHgbejSFRVplc), exported and read in full on November 6, 2026. This is a separate reference; it does not replace the reviewed orientation, mission answers, or the other tools.
 
 The calculator covers L1, L2, L3, NIL1, NIL2, A1, A2, A3, U1, U2, U3 and U4, with four source PFI levels. It shows the peso deduction for the selected occurrence and the displayed frequency path. First charged frequencies are 5 for L1, 4 for L2, 3 for L3 / U1, and 2 for the other codes. It reuses existing peso-rate functions where the source amounts match, while keeping this sheet's frequency rules separate.
 
@@ -137,3 +137,12 @@ New files: resources-content.js, resources.js, resources.css, tests/resources.te
 ## Main orientation download replacement
 
 The user supplied a revised orientation PDF and requested it as the main presentation download. The file is copied byte-for-byte, not recreated or converted into an editable PowerPoint. The original PPTX asset remains archived for compatibility, while all presentation links use the supplied revised PDF. This file replacement does not change mission answers or calculator logic.
+
+
+## Live PFI portal method — November 6, 2026
+
+Open `#pfi-method`, or choose **Quick tools → Live PFI method**. The complete user-linked [Calculation Method](https://apps.52cebu.com/teacher-attendance-records-next/modules/pfi/index.html#/employee/calculation-method) was read on November 6, 2026. Six guided topics cover Process, Codes, Exemptions, Rates, Dates and Evidence. All seven original tables and all 13 full-day leave types are retained alongside plain-English summaries. Code and immunity lookups, topic search, global search, direct topic links and full-guide printing work locally without a server connection.
+
+The live portal is separately labeled because it differs from the sheet and reviewed orientation: NIL1 is within 30 minutes, U1 is post-undertime, U2 is pre-undertime, and mixed LVL codes receive no late immunity. Approved leave is removed before ATI sequencing. The sheet's extra U1 frequency allowance is not silently applied to this portal reference. Source comparisons and source links explain these differences; the existing sheet calculator and mission answers remain unchanged. The reference does not calculate a final monthly payroll entitlement.
+
+Files: `pfi-method-content.js` (source data and pure lookups), `pfi-method.js` (controller), `pfi-method.css` (responsive and print layouts), `tests/pfi-method.test.cjs` (source and lookup checks). Print opens all source disclosures and restores the prior topic afterward. The main downloadable orientation PDF remains the user's exact 32-page attachment.

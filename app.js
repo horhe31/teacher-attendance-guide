@@ -98,9 +98,11 @@
     const words=query.split(/\s+/);
     const matches=content.sections.filter(s=>words.every(word=>[s.title,s.sub,s.key,...(s.list||[]),...(s.cards||[]).flatMap(c=>[c.title,c.body])].join(' ').toLocaleLowerCase().includes(word)));
     const extraMatches=window.TeacherResources?window.TeacherResources.search(query):[];
-    const total=matches.length+extraMatches.length;
-    $('#search-status').textContent=`${total} ${total===1?'topic':'topics'} found across the guide and extra resources`;
-    $('#search-matches').innerHTML=total?matches.map(s=>`<button class="search-hit" data-result="${s.id}"><small>${e(chapterNames[s.chapter])} · reviewed November 2026</small><strong>${e(s.title)}</strong></button>`).join('')+extraMatches.map(r=>`<button class="search-hit" data-extra-result="${e(r.id)}"><small>Extra reference · ${e(r.edition)}</small><strong>${e(r.title)}</strong></button>`).join(''):'<div class="empty-state"><strong>No matching rule found.</strong><p>Try a shorter phrase, such as “leave”, “L1”, or “deadline”.</p></div>';
+    const methodMatches=window.PfiMethod?window.PfiMethod.search(query):[];
+    const total=matches.length+extraMatches.length+methodMatches.length;
+    $('#search-status').textContent=`${total} ${total===1?'topic':'topics'} found across the guide, live PFI method, and extra resources`;
+    $('#search-matches').innerHTML=total?matches.map(s=>`<button class="search-hit" data-result="${s.id}"><small>${e(chapterNames[s.chapter])} · reviewed November 2026</small><strong>${e(s.title)}</strong></button>`).join('')+methodMatches.map(s=>`<button class="search-hit" data-method-result="${e(s.id)}"><small>Live PFI portal · read November 6, 2026</small><strong>${e(s.title)}</strong></button>`).join('')+extraMatches.map(r=>`<button class="search-hit" data-extra-result="${e(r.id)}"><small>Extra reference · ${e(r.edition)}</small><strong>${e(r.title)}</strong></button>`).join(''):'<div class="empty-state"><strong>No matching rule found.</strong><p>Try a shorter phrase, such as “leave”, “L1”, or “deadline”.</p></div>';
+    $$('[data-method-result]').forEach(button=>button.addEventListener('click',()=>{const id=button.dataset.methodResult;$('#rule-search').value='';search();location.hash='pfi-method-'+id;}));
     $$('[data-extra-result]').forEach(button=>button.addEventListener('click',()=>{
       const id=button.dataset.extraResult;$('#rule-search').value='';search();location.hash='resource-'+id;
     }));

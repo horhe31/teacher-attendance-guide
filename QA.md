@@ -108,3 +108,15 @@ This verification record covers the local release candidate. Live deployment sta
 ## Revised main orientation download
 
 The supplied PDF is 32 pages, 720×405 points (16:9), unencrypted and contains no JavaScript. The main PDF asset is copied byte-for-byte from the user attachment. All orientation download controls use this file and a descriptive PDF filename; the previous generated-guide and PPTX labels are replaced. Existing missions, calculators and supplementary references are unchanged.
+
+
+## Live PFI method update — November 6, 2026
+
+- All 92 unit tests pass, including the unchanged original 44 policy tests and seven new portal-source tests.
+- All seven original portal tables match the captured visible source cell-for-cell. All 13 approved full-day leave types are included. The complete portal was read before implementation.
+- Chrome and Edge pass six-topic navigation, code lookup, single-code/mixed-code immunity lookup, portal/global search, no-match recovery, keyboard activation, heading focus, direct links, same-hash cross-source links, reduced motion and zero runtime/asset errors.
+- Every topic has no horizontal overflow at 320, 375, 768 and 1440 pixels. Controls meet 48px minimum height. Desktop and phone layouts were visually inspected.
+- Full-guide print opens every portal table, prints every original table cell (verified from the exported PDF text), and restores the selected topic and disclosures. A rendered U1/U2 page was visually inspected. The existing main orientation download remains unchanged.
+- Existing sheet-calculator Chrome and Edge checks pass after integration. No portal data was substituted into the sheet's source rules, reviewed mission answers or original policy tests.
+
+These are local release checks. GitHub workflow and live assets are verified separately after publication. Physical devices, Safari, Firefox and a human screen-reader session were not tested.

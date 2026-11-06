@@ -12,9 +12,11 @@
   <link rel="stylesheet" href="resources.css">
   <link rel="stylesheet" href="premium.css">
   <link rel="stylesheet" href="pfi-calculator.css">
+  <link rel="stylesheet" href="pfi-method.css">
   <script src="rules.js" defer></script>
   <script src="content.js" defer></script>
   <script src="resources-content.js" defer></script>
+  <script src="pfi-method-content.js" defer></script>
   <script src="app.js" defer></script>
   <script src="mission-content.js" defer></script>
   <script src="quest-core.js" defer></script>
@@ -23,6 +25,7 @@
   <script src="premium.js" defer></script>
   <script src="pfi-calculator-rules.js" defer></script>
   <script src="pfi-calculator.js" defer></script>
+  <script src="pfi-method.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#missions">Skip to learning</a>
@@ -64,9 +67,16 @@
 
     <section class="tools-section" id="tools" aria-labelledby="tools-heading"><div class="wrap">
       <div class="section-heading reveal"><div><p class="eyebrow">02 / MAKE IT PRACTICAL</p><h2 id="tools-heading">Less guessing.<br>More clarity.</h2></div><p>Explore the document’s rules.<br>These tools do not change your portal records.</p></div>
-      <div class="tool-tabs" role="tablist" aria-label="Reference tools"><button role="tab" id="tool-tab-deadline" aria-controls="tool-deadline" aria-selected="true" data-tool="deadline">Deadline finder</button><button role="tab" id="tool-tab-calculator" aria-controls="tool-calculator" aria-selected="false" data-tool="calculator" tabindex="-1">PFI calculator</button><button role="tab" id="tool-tab-rate" aria-controls="tool-rate" aria-selected="false" data-tool="rate" tabindex="-1">PFI class finder</button><button role="tab" id="tool-tab-ati" aria-controls="tool-ati" aria-selected="false" data-tool="ati" tabindex="-1">ATI progression</button></div>
+      <div class="tool-tabs" role="tablist" aria-label="Reference tools"><button role="tab" id="tool-tab-deadline" aria-controls="tool-deadline" aria-selected="true" data-tool="deadline">Deadline finder</button><button role="tab" id="tool-tab-method" aria-controls="tool-method" aria-selected="false" data-tool="method" tabindex="-1">Live PFI method</button><button role="tab" id="tool-tab-calculator" aria-controls="tool-calculator" aria-selected="false" data-tool="calculator" tabindex="-1">Sheet calculator</button><button role="tab" id="tool-tab-rate" aria-controls="tool-rate" aria-selected="false" data-tool="rate" tabindex="-1">PFI class finder</button><button role="tab" id="tool-tab-ati" aria-controls="tool-ati" aria-selected="false" data-tool="ati" tabindex="-1">ATI progression</button></div>
+
+      <div id="tool-method" role="tabpanel" aria-labelledby="tool-tab-method" class="tool-panel" hidden>
+        <div class="method-header"><div><span class="tool-kicker">LIVE PFI PORTAL / READ NOVEMBER 6, 2026</span><h3>Understand your PFI result.</h3><p>Six clear topics from the portal’s Calculation Method. Read the key points, look up a code, or open the complete wording.</p></div><a href="https://apps.52cebu.com/teacher-attendance-records-next/modules/pfi/index.html#/employee/calculation-method" target="_blank" rel="noopener noreferrer">Open the live portal ↗</a></div>
+        <div id="pfi-method-content"></div>
+        <div class="method-comparison"><h4>Keep the sources clear.</h4><p>This reference describes the live portal method read on November 6, 2026. The <a href="#pfi-calculator">spreadsheet calculator</a> follows the separately supplied PFI sheet. Its single-code frequency lookup does not reproduce the portal’s monthly calculation.</p><details><summary>See the important differences</summary><ul><li><strong>Late codes:</strong> the live portal places NIL1 within 30 minutes. Its L3 covers more than 10 minutes with valid Late INFO. The sheet describes L3 / NIL1 as within 20 minutes.</li><li><strong>U1 and U2:</strong> the live portal defines U1 as post-undertime and U2 as pre-undertime. The sheet uses different descriptions.</li><li><strong>Immunity:</strong> the portal removes approved full-day leave, then applies ATI to the earliest remaining incident. Late immunity requires a single late code. The sheet’s frequency matrix alone does not explain these monthly checks.</li><li><strong>U1 frequency:</strong> the sheet’s matrix starts deductions at frequency 3. The live portal lists the earliest-incident ATI rule; its extra late immunity applies only to L1, L2, and L3.</li></ul></details><p>The reviewed <a href="#chapter-pfi">November 2026 orientation</a> and its mission questions keep their edition labels. Use your official portal record when checking your own result.</p></div>
+      </div>
 
       <div id="tool-calculator" role="tabpanel" aria-labelledby="tool-tab-calculator" class="tool-panel" hidden>
+        <div class="pfi-live-notice"><p><strong>KEY NOTE</strong> This is a spreadsheet lookup. The live portal also checks approved leave, the earliest incident, and mixed codes. <a href="#pfi-method">Read the live PFI method →</a></p></div>
         <div class="pfi-calc-intro"><div><span class="tool-kicker">PFI DEDUCTION SHEET / SEPARATE REFERENCE</span><h3>Check one deduction.</h3><p>Choose your recorded code, confirmed PFI level, and frequency. See the deduction for that occurrence.</p></div><a href="https://zp9fxvayn6g.jp.larksuite.com/wiki/NzPxwp5HziQOrQkHgbejSFRVplc" target="_blank" rel="noopener noreferrer">Open the source sheet ↗</a></div>
         <div class="pfi-calc-layout">
           <form id="pfi-calc-form" novalidate>
@@ -94,7 +104,7 @@
         <div class="tool-input"><span class="tool-kicker">EXAMPLES FROM THE DOCUMENT</span><h3>Watch the progression.</h3><p>A failed or incomplete month changes the next qualified amount.</p><fieldset class="scenario-choice"><legend>Choose a source example</legend><label><input type="radio" name="ati-scenario" value="qualified" checked><span>Qualified months <span aria-hidden="true">↗</span></span></label><label><input type="radio" name="ati-scenario" value="failed"><span>Not-qualified month <span aria-hidden="true">↺</span></span></label><label><input type="radio" name="ati-scenario" value="incomplete"><span>Incomplete data <span aria-hidden="true">…</span></span></label></fieldset></div>
         <div class="ati-result" id="ati-result" role="status" aria-live="polite"></div>
       </div>
-      <p class="tool-source">The PFI calculator uses the separately linked PFI DEDUCTION sheet, read November 6, 2026. The other tools use the revised November 2026 orientation. Future filing windows are not assumed.</p>
+      <p class="tool-source">Live PFI method: portal Calculation Method, read November 6, 2026. Sheet calculator: separately linked PFI DEDUCTION spreadsheet. Deadline finder, class finder, and ATI examples: revised November 2026 orientation. Future filing windows are not assumed.</p>
     </div></section>
 
     <section class="action-section wrap" id="action" aria-labelledby="action-heading">

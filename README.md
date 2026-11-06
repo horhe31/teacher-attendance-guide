@@ -53,6 +53,7 @@ The full rules, chapter bookmarks, quick tools, correction checklist, and revise
 - Open a topic, or expand all topics in a chapter.
 - Find a filing deadline within the source's November 2026 windows.
 - Enter Gross PFI to view the corresponding class and three code-group rates.
+- Open the separate PFI sheet calculator to look up one occurrence by code, confirmed level, and frequency.
 - Switch between the original ATI progression examples.
 - Mark chapters as read, with anonymous progress saved on the same device.
 - Check the five correction steps, print the full guide, or download the revised orientation PDF.
@@ -113,6 +114,16 @@ Mission positions, visited cards, correct answers, and stamps are stored separat
 The list of read chapters and the motion setting are stored under `teacher-field-guide-2026-v1`. No teacher name, employee number, attendance record, or tool input is sent or stored. Reading progress stays on that browser/device. If storage is unavailable, progress still works for the current visit. **Reset progress** clears the reading marks. The correction checklist resets on reload.
 
 No analytics, remote fonts, external scripts, or runtime network services are used.
+
+## PFI sheet calculator
+
+Open `#pfi-calculator`, or choose **Quick tools → PFI calculator**. The source is the user-linked [PFI DEDUCTION spreadsheet](https://zp9fxvayn6g.jp.larksuite.com/wiki/NzPxwp5HziQOrQkHgbejSFRVplc), exported and read in full on November 6, 2026. This is a separate reference; it does not replace the reviewed orientation, mission answers, or the other tools.
+
+The calculator covers L1, L2, L3, NIL1, NIL2, A1, A2, A3, U1, U2, U3 and U4, with four source PFI levels. It shows the peso deduction for the selected occurrence and the displayed frequency path. First charged frequencies are 5 for L1, 4 for L2, 3 for L3 / U1, and 2 for the other codes. It reuses existing peso-rate functions where the source amounts match, while keeping this sheet's frequency rules separate.
+
+The source shows gross examples of ₱2,000, ₱4,000, ₱8,000 and ₱13,000, without income ranges. Users choose a confirmed level. The source descriptions leave a 21–30 minute gap, so this calculator requires the recorded code and does not classify minutes. Mixed-code counting, frequency reset periods and leave exemptions are not defined in this sheet and are not calculated. Blank frequency cells are not extended. The tool gives one occurrence's deduction, not a final monthly entitlement or net pay. Inputs stay in memory and clear on reload; Reset calculator does not touch learning progress.
+
+Implementation: `pfi-calculator-rules.js` (pure rules), `pfi-calculator.js` (controller), `pfi-calculator.css` (responsive UI), and `tests/pfi-calculator.test.cjs` (reference boundaries). The original `rules.js` and its 44 tests remain unchanged.
 
 
 ## Extra resources supplied by the user

@@ -1,5 +1,13 @@
 # Verification record
 
+## PFI sheet calculator — November 6, 2026
+
+The newly linked PFI DEDUCTION sheet was exported through its signed-in Lark download menu and read in full (one sheet, populated through row 79). Every one of its 524 numeric frequency cells was compared independently with the calculator's result and matched. All 12 codes and four PFI levels are covered. The source's missing minute range, undefined mixed-code counting / reset periods, gross examples without ranges, and blank later frequencies are explicitly bounded in the UI.
+
+All 85 unit tests pass, including the unchanged original 44 policy tests and 27 new calculator tests. Chrome and Edge both pass direct calculator routing, missing inputs, all-or-nothing result validation, charged / uncharged frequency boundaries, invalid and fractional frequencies, stale-result removal after changes, reset, keyboard selection / submission, 320 / 375 / 768 / 1440px overflow checks, 48px controls, reduced motion, original class finder, chapter links, and zero runtime errors. Inputs clear on reload.
+
+The reviewed guide, mission content, original policy functions, and supplied orientation PDF are preserved. Local checks do not by themselves prove publication; live deployment is verified separately.
+
 Verified locally on November 5, 2026, using installed Windows Chrome and Edge in automated browser sessions.
 
 ## Policy behavior — 44 passing tests

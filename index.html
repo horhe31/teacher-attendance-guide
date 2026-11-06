@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="quest.css">
   <link rel="stylesheet" href="resources.css">
   <link rel="stylesheet" href="premium.css">
+  <link rel="stylesheet" href="pfi-calculator.css">
   <script src="rules.js" defer></script>
   <script src="content.js" defer></script>
   <script src="resources-content.js" defer></script>
@@ -20,6 +21,8 @@
   <script src="quest.js" defer></script>
   <script src="resources.js" defer></script>
   <script src="premium.js" defer></script>
+  <script src="pfi-calculator-rules.js" defer></script>
+  <script src="pfi-calculator.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#missions">Skip to learning</a>
@@ -61,7 +64,21 @@
 
     <section class="tools-section" id="tools" aria-labelledby="tools-heading"><div class="wrap">
       <div class="section-heading reveal"><div><p class="eyebrow">02 / MAKE IT PRACTICAL</p><h2 id="tools-heading">Less guessing.<br>More clarity.</h2></div><p>Explore the document’s rules.<br>These tools do not change your portal records.</p></div>
-      <div class="tool-tabs" role="tablist" aria-label="Reference tools"><button role="tab" id="tool-tab-deadline" aria-controls="tool-deadline" aria-selected="true" data-tool="deadline">Deadline finder</button><button role="tab" id="tool-tab-rate" aria-controls="tool-rate" aria-selected="false" data-tool="rate" tabindex="-1">PFI class finder</button><button role="tab" id="tool-tab-ati" aria-controls="tool-ati" aria-selected="false" data-tool="ati" tabindex="-1">ATI progression</button></div>
+      <div class="tool-tabs" role="tablist" aria-label="Reference tools"><button role="tab" id="tool-tab-deadline" aria-controls="tool-deadline" aria-selected="true" data-tool="deadline">Deadline finder</button><button role="tab" id="tool-tab-calculator" aria-controls="tool-calculator" aria-selected="false" data-tool="calculator" tabindex="-1">PFI calculator</button><button role="tab" id="tool-tab-rate" aria-controls="tool-rate" aria-selected="false" data-tool="rate" tabindex="-1">PFI class finder</button><button role="tab" id="tool-tab-ati" aria-controls="tool-ati" aria-selected="false" data-tool="ati" tabindex="-1">ATI progression</button></div>
+
+      <div id="tool-calculator" role="tabpanel" aria-labelledby="tool-tab-calculator" class="tool-panel" hidden>
+        <div class="pfi-calc-intro"><div><span class="tool-kicker">PFI DEDUCTION SHEET / SEPARATE REFERENCE</span><h3>Check one deduction.</h3><p>Choose your recorded code, confirmed PFI level, and frequency. See the deduction for that occurrence.</p></div><a href="https://zp9fxvayn6g.jp.larksuite.com/wiki/NzPxwp5HziQOrQkHgbejSFRVplc" target="_blank" rel="noopener noreferrer">Open the source sheet ↗</a></div>
+        <div class="pfi-calc-layout">
+          <form id="pfi-calc-form" novalidate>
+            <div class="pfi-calc-step"><label for="pfi-calc-code">1. Choose your attendance code</label><select id="pfi-calc-code" aria-describedby="pfi-code-help" required><option value="">Select the code in your record</option></select><small id="pfi-code-help">Use the code in your attendance record. Do not choose by minutes alone.</small></div>
+            <fieldset class="pfi-calc-step" aria-describedby="pfi-level-help"><legend>2. Choose your PFI level</legend><div class="pfi-levels"><label><input type="radio" name="pfi-calc-level" value="1" required><span><b>Level 1</b><small>₱2,000*</small></span></label><label><input type="radio" name="pfi-calc-level" value="2"><span><b>Level 2</b><small>₱4,000*</small></span></label><label><input type="radio" name="pfi-calc-level" value="3"><span><b>Level 3</b><small>₱8,000*</small></span></label><label><input type="radio" name="pfi-calc-level" value="4"><span><b>Level 4</b><small>₱13,000*</small></span></label></div><small id="pfi-level-help">*Gross PFI examples shown in the sheet. These are not stated income ranges. Use your confirmed level.</small></fieldset>
+            <div class="pfi-calc-step"><label for="pfi-calc-frequency">3. Choose the frequency</label><div class="pfi-stepper"><button type="button" id="pfi-frequency-down" aria-label="Decrease frequency" disabled>−</button><input type="number" id="pfi-calc-frequency" min="1" max="13" step="1" value="1" inputmode="numeric" aria-describedby="pfi-frequency-help" required><button type="button" id="pfi-frequency-up" aria-label="Increase frequency">+</button></div><small id="pfi-frequency-help">Frequency means occurrence number. Choose a code to see its supported range.</small></div>
+            <p id="pfi-calc-error" role="alert"></p><div class="pfi-calc-actions"><button class="button primary" type="submit">Calculate deduction <span aria-hidden="true">↗</span></button><button class="text-button" type="reset">Reset calculator</button></div>
+          </form>
+          <div id="pfi-calc-result" class="pfi-calc-result" role="status" aria-live="polite" aria-atomic="true"></div>
+        </div>
+        <div class="pfi-scope-note"><p><strong>KEY NOTE</strong> This estimates one occurrence using the linked PFI sheet. It does not total mixed codes, apply leave exemptions, calculate ATI, or change your official record.</p><details><summary>Read the source limits before using the result</summary><ul><li>The sheet shows frequency columns, but does not explain how different codes combine or when frequency resets. Use the frequency confirmed in your record.</li><li>Its late descriptions say “within 20 minutes” for L3 / NIL1 and “after 30 minutes” for NIL2. The 21–30 minute gap is unclear. This tool does not assign a code from minutes.</li><li>Blank cells after the last shown frequency are not treated as zero or extended.</li><li>This separate reference does not replace the <a href="#chapter-pfi">reviewed November 2026 orientation</a>. Check the official record when the sources differ.</li></ul></details></div>
+      </div>
 
       <div id="tool-deadline" role="tabpanel" aria-labelledby="tool-tab-deadline" class="tool-panel">
         <div class="tool-input"><span class="tool-kicker">NOVEMBER 2026 FILING WINDOWS</span><h3>When should I file?</h3><p>Pick the portal and attendance date. The earlier deadline always applies.</p><fieldset class="portal-choice"><legend>Which portal?</legend><label><input type="radio" name="deadline-portal" value="pfi" checked><span>PFI</span></label><label><input type="radio" name="deadline-portal" value="ati"><span>ATI</span></label><label><input type="radio" name="deadline-portal" value="ranking"><span>Ranking</span></label></fieldset><label class="field-label" for="event-date">Attendance date</label><input class="date-field" type="date" id="event-date" value="2026-11-06" min="2026-09-26" max="2026-11-30" aria-describedby="date-help"><small id="date-help">PFI: Sept 26–Nov 30. ATI / Ranking: November only.</small></div>
@@ -77,7 +94,7 @@
         <div class="tool-input"><span class="tool-kicker">EXAMPLES FROM THE DOCUMENT</span><h3>Watch the progression.</h3><p>A failed or incomplete month changes the next qualified amount.</p><fieldset class="scenario-choice"><legend>Choose a source example</legend><label><input type="radio" name="ati-scenario" value="qualified" checked><span>Qualified months <span aria-hidden="true">↗</span></span></label><label><input type="radio" name="ati-scenario" value="failed"><span>Not-qualified month <span aria-hidden="true">↺</span></span></label><label><input type="radio" name="ati-scenario" value="incomplete"><span>Incomplete data <span aria-hidden="true">…</span></span></label></fieldset></div>
         <div class="ati-result" id="ati-result" role="status" aria-live="polite"></div>
       </div>
-      <p class="tool-source">Reference tools use the revised November 2026 orientation. Future filing windows are not assumed.</p>
+      <p class="tool-source">The PFI calculator uses the separately linked PFI DEDUCTION sheet, read November 6, 2026. The other tools use the revised November 2026 orientation. Future filing windows are not assumed.</p>
     </div></section>
 
     <section class="action-section wrap" id="action" aria-labelledby="action-heading">
@@ -93,7 +110,7 @@
 
     <section class="extra-resources wrap" id="resources" aria-labelledby="resources-heading">
       <div class="quest-section-heading"><div><p class="eyebrow">EXTRA REFERENCES / FIVE SUPPLIED IMAGES</p><h2 id="resources-heading" tabindex="-1">More answers.<br>Source in view.</h2></div><p>Read the plain-English version.<br>Open the original image to check the wording.</p></div>
-      <div class="resource-edition-note"><strong>REMEMBER</strong><p>These are extra references. The reviewed <a href="#guide">November 2026 guide</a> remains the rule for missions and calculators. Dates, unclear terms, and differences are marked below.</p></div>
+      <div class="resource-edition-note"><strong>REMEMBER</strong><p>These are extra references. The reviewed <a href="#guide">November 2026 guide</a> remains the rule for missions and orientation tools. The separate <a href="#pfi-calculator">PFI calculator</a> cites its own source sheet. Dates, unclear terms, and differences are marked below.</p></div>
       <div class="resource-toolbar"><label class="resource-search"><span>Find an extra reference</span><input type="search" id="resource-search" placeholder="Try AWC, payslip, overtime, or leave…" autocomplete="off" aria-controls="resource-list"></label><button class="text-button" id="resource-clear">Clear search</button></div>
       <div class="resource-filters" role="group" aria-label="Filter extra resources"><button data-resource-filter="all" aria-pressed="true">All five</button><button data-resource-filter="incentives" aria-pressed="false">Incentives</button><button data-resource-filter="pay" aria-pressed="false">Pay &amp; cutoffs</button><button data-resource-filter="ranking" aria-pressed="false">Attendance points</button><button data-resource-filter="overtime" aria-pressed="false">OT reference</button><button data-resource-filter="faq" aria-pressed="false">FAQs</button></div>
       <p id="resource-status" role="status" aria-live="polite"></p><div id="resource-list"></div>
